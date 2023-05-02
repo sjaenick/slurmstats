@@ -6,6 +6,8 @@ use warnings;
 use Getopt::Std;
 use Data::Dumper;
 
+my $VERSION = "1.00";
+
 my %opts;
 getopts('ahj:k', \%opts);
 
@@ -15,6 +17,7 @@ usage() unless defined($array_id) and ($array_id =~ /^\d+$/);
 usage() if defined($opts{'h'}) and defined($opts{'k'});
 
 sub usage {
+    print STDERR "slurmstats $VERSION\n\n";
     print STDERR "Usage: $0 [-a] [-h | -k] -j arrayId\n";
     print STDERR "    -a  Display average time instead of median\n";
     print STDERR "    -h  Group jobs by host\n";
